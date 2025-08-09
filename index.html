@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indian WWE Superstars | History, Bios, Socials</title>
+  <meta name="description" content="Discover every WWE Superstar from India. Bios, ring names, achievements, and official social links in a fast, mobile-friendly gallery." />
+  <meta name="theme-color" content="#111827" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://example.com/" />
+  <meta property="og:title" content="Indian WWE Superstars" />
+  <meta property="og:description" content="A complete list of WWE Superstars from India with bios and socials." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Indian WWE Superstars",
+    "description": "Every WWE Superstar from India — bios, ring names, achievements, and social links.",
+    "about": ["WWE", "India", "Pro Wrestling", "Superstars"]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="#" class="brand" aria-label="Home">
+  <img src="assets/logo.svg" alt="WWE India" class="brand-logo" />
+        <span class="brand-text">WWE India Superstars</span>
+      </a>
+      <nav class="top-nav" aria-label="Primary">
+        <a href="#superstars" class="nav-link">Superstars</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero" id="superstars">
+      <div class="container">
+        <h1>Indian WWE Superstars</h1>
+        <p class="sub">A fast, searchable gallery of every Indian-origin WWE performer. Tap a card for full details.</p>
+        <form id="searchForm" role="search" aria-label="Search superstars" class="search">
+          <input id="searchInput" type="search" name="q" placeholder="Search by name or ring name…" aria-label="Search by name or ring name" autocomplete="off" />
+          <button type="reset" id="clearSearch" aria-label="Clear search" title="Clear">✕</button>
+        </form>
+        <div class="filters" aria-label="Quick filters">
+          <button class="chip" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" data-filter="male">Male</button>
+          <button class="chip" data-filter="female">Female</button>
+          <button class="chip" data-filter="tag-team">Tag Team</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-section">
+      <div id="cardsGrid" class="container grid" aria-live="polite" aria-busy="false">
+        <!-- Cards injected by JS -->
+      </div>
+      <div class="container">
+        <p id="noResults" class="no-results" hidden>No superstars match your search.</p>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="container">
+        <h2>About this project</h2>
+        <p>Built as a fast, SEO-friendly single page app to showcase WWE superstars of Indian origin. All images and social links are placeholders you can replace later.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="year"></span> WWE India Superstars • Built with vanilla HTML/CSS/JS.</p>
+      <a href="#content" class="back-to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  
+
+  <script src="js/data.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
