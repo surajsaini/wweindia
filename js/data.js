@@ -2,15 +2,16 @@
 // Note on SEO: names and ringNames are plain text; alt text mirrors names.
 
 const SUPERSTARS = [
+  // 1. The Great Khali - Most popular, first Indian WWE Champion
   {
     id: 'khali',
     name: 'Dalip Singh Rana',
     ringName: 'The Great Khali',
-  dob: 'August 27, 1972',
-    birthplace: 'Dhiraina, India',
+    dob: 'August 27, 1972',
+    birthplace: 'Dhiraina, HP, India',
     gender: 'male',
     type: 'singles',
-  photo: 'assets/superstars/khali.jpg',
+    photo: 'assets/superstars/khali.jpg',
     bio: 'The first Indian-born World Heavyweight Champion and WWE Hall of Famer; an iconic figure who paved the way for future talent.',
     socials: {
       wikipedia: 'https://en.wikipedia.org/wiki/The_Great_Khali',
@@ -20,6 +21,24 @@ const SUPERSTARS = [
       wwe: 'https://www.wwe.com/superstars/the-great-khali'
     }
   },
+  // 2. Jinder Mahal - Former WWE Champion, recent success
+  {
+    id: 'jinder-mahal',
+    name: 'Yuvraj Singh Dhesi',
+    ringName: 'Jinder Mahal',
+    dob: 'July 19, 1986',
+    birthplace: 'Calgary, Alberta, Canada',
+    gender: 'male',
+    type: 'singles',
+    photo: 'assets/superstars/jinder-mahal.jpg',
+    bio: 'Former WWE Champion; among the most successful Indian-origin performers.',
+    socials: {
+      wikipedia: 'https://en.wikipedia.org/wiki/Jinder_Mahal',
+      instagram: 'https://www.instagram.com/rajthemaharaja',
+      wwe: 'https://www.wwe.com/superstars/jinder-mahal'
+    }
+  },
+  // 3. Gama Singh - Pioneer and mentor
   {
     id: 'gama-singh',
     name: 'Gardowar Singh Sahota',
@@ -57,7 +76,7 @@ const SUPERSTARS = [
     id: 'singh-brothers',
     name: 'Sunil Singh & Samir Singh',
     ringName: 'The Singh Brothers',
-  dob: '',
+  dob: 'Nov 13, 1984 & Nov 2, 1987',
     birthplace: 'Burnaby, British Columbia, Canada',
     gender: 'male',
     type: 'tag-team',
@@ -72,22 +91,7 @@ const SUPERSTARS = [
       ]
     }
   },
-  {
-    id: 'jinder-mahal',
-    name: 'Yuvraj Singh Dhesi',
-    ringName: 'Jinder Mahal',
-  dob: 'July 19, 1986',
-    birthplace: 'Calgary, Alberta, Canada',
-    gender: 'male',
-    type: 'singles',
-  photo: 'assets/superstars/jinder-mahal.jpg',
-    bio: 'Former WWE Champion; among the most successful Indian-origin performers.',
-    socials: {
-      wikipedia: 'https://en.wikipedia.org/wiki/Jinder_Mahal',
-      instagram: 'https://www.instagram.com/rajthemaharaja',
-      wwe: 'https://www.wwe.com/superstars/jinder-mahal'
-    }
-  },
+ 
   {
     id: 'akam',
     name: 'Sunny Dhinsa',
@@ -210,7 +214,7 @@ const SUPERSTARS = [
     name: 'Sukhwinder Singh Grewal',
     ringName: 'Giant Zanjeer',
   dob: '',
-    birthplace: '',
+    birthplace: 'Jagraon, Punjab, India',
     gender: 'male',
     type: 'singles',
   photo: 'assets/superstars/giant-zanjeer.jpg',
@@ -225,7 +229,7 @@ const SUPERSTARS = [
     name: 'Laxmikant Rajpoot',
     ringName: 'Guru Raaj',
   dob: '',
-    birthplace: '',
+    birthplace: 'Bandia, Uttarakhand, India',
     gender: 'male',
     type: 'singles',
   photo: 'assets/superstars/guru-raaj.jpg',
