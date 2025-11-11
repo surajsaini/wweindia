@@ -1,5 +1,27 @@
-# Allow all
+# Allow all search engines and bots
 User-agent: *
 Allow: /
+Allow: /index.html
+Allow: /live-stream-on-netflix.html
+Disallow: /admin/
+Disallow: /private/
 
-Sitemap: https://example.com/sitemap.xml
+# Specific bot optimizations
+User-agent: Googlebot
+Allow: /
+Allow: /index.html
+Allow: /live-stream-on-netflix.html
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Allow: /index.html
+Allow: /live-stream-on-netflix.html
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://wweindia.com/sitemap.xml
