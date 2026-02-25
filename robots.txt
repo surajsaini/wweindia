@@ -2,7 +2,7 @@
 User-agent: *
 Allow: /
 Allow: /index.html
-Allow: /live-stream-on-netflix.html
+
 Disallow: /admin/
 Disallow: /private/
 
@@ -10,13 +10,13 @@ Disallow: /private/
 User-agent: Googlebot
 Allow: /
 Allow: /index.html
-Allow: /live-stream-on-netflix.html
+
 Crawl-delay: 0
 
 User-agent: Bingbot
 Allow: /
 Allow: /index.html
-Allow: /live-stream-on-netflix.html
+
 Crawl-delay: 1
 
 User-agent: Slurp

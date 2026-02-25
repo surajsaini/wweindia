@@ -1,5 +1,5 @@
 /* App: render grid, search, filters, modal; small enhancements */
-(function(){
+(function () {
   const grid = document.getElementById('cardsGrid');
   const searchInput = document.getElementById('searchInput');
   const clearBtn = document.getElementById('clearSearch');
@@ -9,7 +9,56 @@
   const yearEl = document.getElementById('year');
   yearEl.textContent = new Date().getFullYear();
 
-  // No popup/modal anymore
+  // Mobile Menu & Dropdowns
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const headerNav = document.getElementById('headerNav');
+  const menuIconOpen = document.querySelector('.menu-icon-open');
+  const menuIconClose = document.querySelector('.menu-icon-close');
+
+  if (mobileMenuBtn && headerNav) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = headerNav.classList.contains('nav-open');
+      if (isOpen) {
+        headerNav.classList.remove('nav-open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        menuIconOpen.style.display = 'block';
+        menuIconClose.style.display = 'none';
+      } else {
+        headerNav.classList.add('nav-open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        menuIconOpen.style.display = 'none';
+        menuIconClose.style.display = 'block';
+      }
+    });
+  }
+
+  // Dropdown Accordion for Mobile
+  const dropdownBtns = document.querySelectorAll('.nav-dropdown-btn');
+  dropdownBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        const parent = btn.closest('.nav-dropdown');
+        const wasOpen = parent.classList.contains('open');
+
+        // Close siblings
+        document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+          if (d !== parent) {
+            d.classList.remove('open');
+            d.querySelector('.nav-dropdown-btn').setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        if (wasOpen) {
+          parent.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          parent.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+    });
+  });
 
   const icon = (name) => {
     // brand icon set (white glyphs; colors via CSS)
@@ -27,17 +76,17 @@
     return map[name] || map.link;
   };
 
-  function socialLinks(socials){
+  function socialLinks(socials) {
     const entries = Object.entries(socials);
     const parts = [];
-    for(const [key, val] of entries){
-      if(!val) continue;
+    for (const [key, val] of entries) {
+      if (!val) continue;
       const list = Array.isArray(val) ? val : [val];
       const brandKey = key === 'twitter' ? 'x' : key; // normalize Twitter to X
-      for(const url of list){
-  const safe = String(url);
-  // Only render as link if it looks like a URL (prevents rendering text notes)
-  if(!/^https?:\/\//i.test(safe) && !/^mailto:/i.test(safe)) continue;
+      for (const url of list) {
+        const safe = String(url);
+        // Only render as link if it looks like a URL (prevents rendering text notes)
+        if (!/^https?:\/\//i.test(safe) && !/^mailto:/i.test(safe)) continue;
         const label = brandKey[0].toUpperCase() + brandKey.slice(1);
         parts.push(`<a class="soc-btn brand-${brandKey}" href="${safe}" target="_blank" rel="noopener nofollow" title="${label}" aria-label="${label}">${icon(brandKey)}</a>`);
       }
@@ -45,7 +94,7 @@
     return parts.join('');
   }
 
-  function cardTemplate(p){
+  function cardTemplate(p) {
     const alt = `${p.ringName} (${p.name})`;
     return `
       <article class="card" data-id="${p.id}">
@@ -68,22 +117,22 @@
     `;
   }
 
-  function render(list){
-    grid.setAttribute('aria-busy','true');
+  function render(list) {
+    grid.setAttribute('aria-busy', 'true');
     grid.innerHTML = list.map(cardTemplate).join('');
-    grid.setAttribute('aria-busy','false');
+    grid.setAttribute('aria-busy', 'false');
     noResults.hidden = list.length !== 0;
-  setupReveals();
+    setupReveals();
   }
 
-  function filterList(query, filter){
+  function filterList(query, filter) {
     const q = query.trim().toLowerCase();
     return SUPERSTARS.filter(p => {
       const matchQ = !q || p.name.toLowerCase().includes(q) || p.ringName.toLowerCase().includes(q);
       const matchF = filter === 'all' ||
-                     (filter === 'male' && p.gender === 'male') ||
-                     (filter === 'female' && p.gender === 'female') ||
-                     (filter === 'tag-team' && p.type === 'tag-team');
+        (filter === 'male' && p.gender === 'male') ||
+        (filter === 'female' && p.gender === 'female') ||
+        (filter === 'tag-team' && p.type === 'tag-team');
       return matchQ && matchF;
     });
   }
@@ -92,20 +141,20 @@
 
   // Search
   let currentFilter = 'all';
-  function update(){
+  function update() {
     const list = filterList(searchInput.value, currentFilter);
     render(list);
   }
   searchInput.addEventListener('input', update);
-  clearBtn.addEventListener('click', ()=>{
+  clearBtn.addEventListener('click', () => {
     searchInput.value = '';
     update();
   });
 
   // Filters
-  chips.forEach(ch => ch.addEventListener('click', ()=>{
-    chips.forEach(x => x.setAttribute('aria-pressed','false'));
-    ch.setAttribute('aria-pressed','true');
+  chips.forEach(ch => ch.addEventListener('click', () => {
+    chips.forEach(x => x.setAttribute('aria-pressed', 'false'));
+    ch.setAttribute('aria-pressed', 'true');
     currentFilter = ch.dataset.filter || 'all';
     update();
   }));
@@ -113,19 +162,19 @@
   // Initial
   render(SUPERSTARS);
 
-  function setupReveals(){
+  function setupReveals() {
     const cards = grid.querySelectorAll('.card');
-    const obs = new IntersectionObserver((entries)=>{
-      for(const e of entries){
-        if(e.isIntersecting){
+    const obs = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
           e.target.classList.add('show');
           obs.unobserve(e.target);
         }
       }
-    }, {threshold: 0.12});
-    cards.forEach((c,i)=>{
+    }, { threshold: 0.12 });
+    cards.forEach((c, i) => {
       c.classList.add('reveal');
-      c.style.transitionDelay = (i%6)*30 + 'ms';
+      c.style.transitionDelay = (i % 6) * 30 + 'ms';
       obs.observe(c);
     });
   }
