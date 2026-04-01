@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+
     /* ── Copyright Year ── */
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -62,4 +63,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.1 });
         revealEls.forEach(el => observer.observe(el));
     }
-});
+
+    function getLastWeekdayFormatted(targetDay) {
+        const today = new Date();
+        const day = today.getDay();
+
+        const diff = (day >= targetDay)
+            ? day - targetDay
+            : 7 - (targetDay - day);
+
+        const lastDay = new Date(today);
+        lastDay.setDate(today.getDate() - diff);
+
+        const yyyy = lastDay.getFullYear();
+        const mm = String(lastDay.getMonth() + 1).padStart(2, '0');
+        const dd = String(lastDay.getDate()).padStart(2, '0');
+
+        return `${yyyy}-${mm}-${dd}`;
+    }
+
+    const nxtDate = getLastWeekdayFormatted(2);
+    const link1 = document.getElementById("nxtLink");
+    if (link1) {
+        link1.href = `https://www.wwe.com/shows/wwenxt/${nxtDate}`;
+        link1.innerText = `Latest NXT Results (${nxtDate}) →`;
+    }
+
+    const rawDate = getLastWeekdayFormatted(1);
+    const link2 = document.getElementById("rawLink");
+    if (link2) {
+        link2.href = `https://www.wwe.com/shows/raw/${rawDate}/results`;
+        link2.innerText = `Latest Raw Results (${rawDate}) →`;
+    }
+
+    const smackdownDate = getLastWeekdayFormatted(5);
+    const link = document.getElementById("smackdownLink");
+    if (link) {
+        link.href = `https://www.wwe.com/shows/smackdown/${smackdownDate}`;
+        link.innerText = `Latest SmackDown Results (${smackdownDate}) →`;
+    }
+
+
+});     
