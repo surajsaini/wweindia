@@ -184,6 +184,10 @@ a {
   height: 24px;
 }
 
+.menu-icon-close {
+  display: none;
+}
+
 /* Header Responsive */
 @media(max-width:768px) {
   .header-content {
