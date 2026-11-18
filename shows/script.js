@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rawDate = getLastWeekdayFormatted(1);
     const link2 = document.getElementById("rawLink");
     if (link2) {
-        link2.href = `https://www.wwe.com/shows/raw/${rawDate}/results`;
+        link2.href = `https://www.wwe.com/shows/raw/${rawDate}`;
         link2.innerText = `Latest Raw Results (${rawDate}) →`;
     }
 
